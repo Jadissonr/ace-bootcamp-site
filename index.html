@@ -14,12 +14,37 @@
 <meta property="og:title" content="ACE Bootcamp — Estrutura de alto rendimento pra quem joga pra ganhar">
 <meta property="og:description" content="Treine, more e evolua: gamerooms com hardware de ponta, monitores 360Hz e três unidades em São Paulo.">
 <meta property="og:url" content="https://acebootcamp.com.br/">
-<meta property="og:image" content="https://acebootcamp.com.br/assets/img/joinville-gameroom.jpg">
+<meta property="og:image" content="https://acebootcamp.com.br/assets/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    "name": "ACE Bootcamp",
+    "description": "Estrutura de alto rendimento para equipes de esports: gameroom com hardware de ponta, dormitório e alimentação em três unidades em São Paulo.",
+    "url": "https://acebootcamp.com.br/",
+    "logo": "https://acebootcamp.com.br/assets/img/logo.png",
+    "image": "https://acebootcamp.com.br/assets/img/og-image.jpg",
+    "telephone": "+55-11-96448-0937",
+    "email": "contato.acebootcamp@gmail.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "São Paulo", "addressRegion": "SP", "addressCountry": "BR" },
+    "areaServed": "São Paulo, SP",
+    "sameAs": ["https://instagram.com/ace_bootcamp_br", "https://wa.me/5511964480937"]
+}
+</script>
+<!--
+    Google Analytics 4: para medir visitas e cliques no WhatsApp, cole aqui o código
+    do GA4 (Admin > Fluxos de dados > Instruções de tag), trocando G-XXXXXXXXXX pelo seu ID:
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+    Os eventos "whatsapp_click", "instagram_click", "email_click" e "form_whatsapp" já são enviados automaticamente.
+-->
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="assets/img/favicon-64.png">
 <link rel="apple-touch-icon" href="assets/img/favicon-64.png">
-<link rel="preload" as="image" href="assets/img/joinville-gameroom.jpg">
+<link rel="preload" as="image" type="image/webp" href="assets/img/joinville-gameroom.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -338,12 +363,20 @@
     }
 
     /* ---------------- NOTÍCIAS ---------------- */
-    .news-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    .news-card { padding: 28px 30px; display: flex; gap: 20px; align-items: center; }
-    .news-card .ico { width: 48px; height: 48px; border-radius: 14px; flex-shrink: 0; display: grid; place-items: center; background: var(--surface-2); color: var(--purple); border: 1px dashed rgba(167,139,250,.4); }
-    .news-card .soon { font-size: 11.5px; font-weight: 700; letter-spacing: 1.2px; color: var(--pink); }
-    .news-card h3 { font-size: 16px; font-weight: 600; color: var(--text); }
-    @media (max-width: 760px) { .news-grid { grid-template-columns: 1fr; } }
+    .ig-box { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; padding: clamp(28px, 4vw, 48px); }
+    .ig-box:hover { transform: none; }
+    .ig-text h2 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.08; font-weight: 700; letter-spacing: -.5px; }
+    .ig-text p { color: var(--text-dim); font-size: 16.5px; margin-top: 16px; max-width: 460px; }
+    .ig-handle { display: inline-flex; align-items: center; gap: 14px; margin-top: 28px; padding: 12px 20px 12px 12px; border-radius: 16px; background: var(--surface-2); border: 1px solid var(--border-strong); transition: border-color .25s, transform .25s var(--ease); }
+    .ig-handle:hover { border-color: rgba(232,121,249,.5); transform: translateY(-2px); }
+    .ig-logo { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; color: #fff; background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 90%); }
+    .ig-handle strong { display: block; font-size: 16px; }
+    .ig-handle small { color: var(--pink); font-size: 13px; font-weight: 600; }
+    .ig-mosaic { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .ig-mosaic img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 14px; transition: transform .6s var(--ease), filter .4s; filter: saturate(1.05); }
+    .ig-mosaic:hover img { filter: brightness(.8) saturate(1.2); }
+    .ig-mosaic img:hover { transform: scale(1.03); filter: none; }
+    @media (max-width: 860px) { .ig-box { grid-template-columns: 1fr; } }
 
     /* ---------------- CTA ---------------- */
     .cta-banner { padding: 40px 0 110px; }
@@ -377,6 +410,16 @@
     .form input:focus, .form textarea:focus { outline: none; border-color: var(--purple); box-shadow: 0 0 0 4px rgba(167,139,250,.15); }
     .form textarea { resize: vertical; min-height: 130px; }
     .form .btn { justify-content: center; width: 100%; }
+    fieldset.field { border: 0; min-width: 0; }
+    fieldset.field legend { font-size: 13px; font-weight: 600; color: var(--text-dim); margin-bottom: 8px; padding: 0; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chips label { cursor: pointer; }
+    .chips input { position: absolute; opacity: 0; pointer-events: none; }
+    .chips span { display: inline-block; font-size: 14px; font-weight: 600; padding: 9px 16px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--border); color: var(--text-dim); transition: .2s; }
+    .chips label:hover span { border-color: var(--border-strong); color: var(--text); }
+    .chips input:checked + span { background: rgba(167,139,250,.14); border-color: var(--purple); color: var(--text); }
+    .chips input:focus-visible + span { outline: 2px solid var(--cyan); outline-offset: 2px; }
+    .form-note { font-size: 12.5px; color: var(--text-faint); text-align: center; margin-top: -4px; }
     @media (max-width: 860px) { .contato-grid { grid-template-columns: 1fr; } form.form { padding: 24px; } }
 
     /* ---------------- FOOTER ---------------- */
@@ -445,7 +488,7 @@
 
 <main>
 <section class="hero" id="inicio">
-    <div class="hero-bg"><img src="assets/img/joinville-gameroom.jpg" alt="" fetchpriority="high"></div>
+    <div class="hero-bg"><img src="assets/img/joinville-gameroom.webp" alt="" fetchpriority="high"></div>
     <div class="hero-grid-lines"></div>
     <div class="wrap">
         <div class="hero-content">
@@ -492,7 +535,7 @@
             </div>
         </div>
         <div class="photo-frame reveal" data-delay="2">
-            <img src="assets/img/hero-gameroom.jpg" alt="Gameroom da ACE Bootcamp" width="1400" height="971" loading="lazy">
+            <img src="assets/img/hero-gameroom.webp" alt="Gameroom da ACE Bootcamp" width="1400" height="971" loading="lazy">
             <div class="float-badge">
                 <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg></div>
                 <div><strong>Treino · Moradia · Alimentação</strong><small>Tudo no mesmo ecossistema</small></div>
@@ -532,7 +575,7 @@
             <article class="card pc-card reveal">
                 <div class="img-wrap">
                     <span class="badge hot">CONFIGURAÇÃO A</span>
-                    <img src="assets/img/pc-config-a.jpg" alt="Estação ACE — configuração Ryzen 9800X3D" width="1300" height="975" loading="lazy">
+                    <img src="assets/img/pc-config-a.webp" alt="Estação ACE — configuração Ryzen 9800X3D" width="1300" height="975" loading="lazy">
                 </div>
                 <div class="pc-card-body">
                     <h3 class="display">Performance máxima</h3>
@@ -555,7 +598,7 @@
             <article class="card pc-card reveal" data-delay="1">
                 <div class="img-wrap">
                     <span class="badge">CONFIGURAÇÃO B</span>
-                    <img src="assets/img/pc-config-b.jpg" alt="Estação ACE — configuração Ryzen 7800X3D" width="975" height="1300" loading="lazy">
+                    <img src="assets/img/pc-config-b.webp" alt="Estação ACE — configuração Ryzen 7800X3D" width="975" height="1300" loading="lazy">
                 </div>
                 <div class="pc-card-body">
                     <h3 class="display">Alta performance</h3>
@@ -583,7 +626,7 @@
     <div class="wrap">
         <div class="equip-grid">
             <article class="card equip-card reveal">
-                <div class="img-wrap"><img src="assets/img/monitor-benq.jpg" alt="Monitor BenQ na estação ACE" width="1300" height="975" loading="lazy"></div>
+                <div class="img-wrap"><img src="assets/img/monitor-benq.webp" alt="Monitor BenQ na estação ACE" width="1300" height="975" loading="lazy"></div>
                 <div class="equip-text">
                     <span class="tag">MONITORES</span>
                     <h3 class="display">BenQ XL2566K / XL2566X</h3>
@@ -592,7 +635,7 @@
                 </div>
             </article>
             <article class="card equip-card reveal" data-delay="1">
-                <div class="img-wrap"><img src="assets/img/cadeira-ace.jpg" alt="Cadeira gamer ACE Bootcamp" width="1200" height="1600" loading="lazy"></div>
+                <div class="img-wrap"><img src="assets/img/cadeira-ace.webp" alt="Cadeira gamer ACE Bootcamp" width="1050" height="1400" loading="lazy"></div>
                 <div class="equip-text">
                     <span class="tag">CADEIRAS</span>
                     <h3 class="display">Cadeira ACE</h3>
@@ -613,7 +656,7 @@
         </div>
         <div class="unidades-grid">
             <a href="#abilio" class="card unidade-card reveal">
-                <div class="img-wrap"><span class="num">01</span><img src="assets/img/abilio-gameroom.jpg" alt="" width="1200" height="1600" loading="lazy"></div>
+                <div class="img-wrap"><span class="num">01</span><img src="assets/img/abilio-gameroom.webp" alt="" width="1050" height="1400" loading="lazy"></div>
                 <div class="unidade-body">
                     <span class="kicker">UNIDADE 01</span>
                     <h3 class="display">Abílio</h3>
@@ -625,11 +668,11 @@
                 </div>
             </a>
             <a href="#joinville" class="card unidade-card reveal" data-delay="1">
-                <div class="img-wrap"><span class="num">02</span><img src="assets/img/joinville-convivencia.jpg" alt="" width="1400" height="931" loading="lazy"></div>
+                <div class="img-wrap"><span class="num">02</span><img src="assets/img/joinville-convivencia.webp" alt="" width="1400" height="931" loading="lazy"></div>
                 <div class="unidade-body">
                     <span class="kicker">UNIDADE 02</span>
                     <h3 class="display">Joinville</h3>
-                    <p>Alimentação e convivência — refeições do time acontecem nessa unidade, quatro vezes ao dia.</p>
+                    <p>Alimentação, convivência e gameroom completa — refeições do time acontecem nessa unidade, quatro vezes ao dia.</p>
                     <div class="foot">
                         <span class="loc"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Vila Mariana, SP</span>
                         <span class="more">Ver unidade →</span>
@@ -637,7 +680,7 @@
                 </div>
             </a>
             <a href="#tumiaru" class="card unidade-card reveal" data-delay="2">
-                <div class="img-wrap"><span class="num">03</span><img src="assets/img/tumiaru-quarto.jpg" alt="" width="731" height="1300" loading="lazy"></div>
+                <div class="img-wrap"><span class="num">03</span><img src="assets/img/tumiaru-quarto.webp" alt="" width="731" height="1300" loading="lazy"></div>
                 <div class="unidade-body">
                     <span class="kicker">UNIDADE 03</span>
                     <h3 class="display">Tumiaru</h3>
@@ -664,12 +707,12 @@
         </div>
         <div class="gallery tall">
             <figure class="shot reveal">
-                <img src="assets/img/abilio-convivencia.jpg" alt="Área de convivência da unidade Abílio" width="1200" height="1600" loading="lazy">
+                <img src="assets/img/abilio-convivencia.webp" alt="Área de convivência da unidade Abílio" width="1050" height="1400" loading="lazy">
                 <span class="zoom" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
                 <figcaption><span class="tag">CONVIVÊNCIA</span><h3>Espaço externo</h3><p>Área externa arejada, com mesas e plantas — um respiro fora da gameroom entre as sessões de treino.</p></figcaption>
             </figure>
             <figure class="shot reveal" data-delay="1">
-                <img src="assets/img/abilio-gameroom.jpg" alt="Gameroom da unidade Abílio" width="1200" height="1600" loading="lazy">
+                <img src="assets/img/abilio-gameroom.webp" alt="Gameroom da unidade Abílio" width="1050" height="1400" loading="lazy">
                 <span class="zoom" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
                 <figcaption><span class="tag">GAMEROOM</span><h3>Estações completas</h3><p>PCs montados em prateleira própria, painéis acústicos na parede e estações lado a lado prontas pro treino.</p></figcaption>
             </figure>
@@ -689,12 +732,12 @@
         </div>
         <div class="gallery">
             <figure class="shot reveal">
-                <img src="assets/img/joinville-convivencia.jpg" alt="Área de convivência da unidade Joinville" width="1400" height="931" loading="lazy">
+                <img src="assets/img/joinville-convivencia.webp" alt="Área de convivência da unidade Joinville" width="1400" height="931" loading="lazy">
                 <span class="zoom" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
                 <figcaption><span class="tag">CONVIVÊNCIA</span><h3>Espaço pra descontrair</h3><p>Área externa coberta com mesas, geladeira própria e ambiente pra refeições e conversa fora da gameroom.</p></figcaption>
             </figure>
             <figure class="shot reveal" data-delay="1">
-                <img src="assets/img/joinville-gameroom.jpg" alt="Gameroom da unidade Joinville" width="1400" height="934" loading="lazy">
+                <img src="assets/img/joinville-gameroom.webp" alt="Gameroom da unidade Joinville" width="1400" height="934" loading="lazy">
                 <span class="zoom" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
                 <figcaption><span class="tag">GAMEROOM</span><h3>Estações lado a lado</h3><p>Fileira completa de estações ACE, com sofá integrado pra quem está de folga acompanhar o time treinando.</p></figcaption>
             </figure>
@@ -714,12 +757,12 @@
         </div>
         <div class="gallery tall">
             <figure class="shot reveal">
-                <img src="assets/img/tumiaru-quarto.jpg" alt="Quarto da unidade Tumiaru" width="731" height="1300" loading="lazy">
+                <img src="assets/img/tumiaru-quarto.webp" alt="Quarto da unidade Tumiaru" width="731" height="1300" loading="lazy">
                 <span class="zoom" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
                 <figcaption><span class="tag">QUARTOS</span><h3>Descanso entre as sessões</h3><p>Beliches confortáveis, armários e espaço reservado pra cada jogador guardar seus pertences.</p></figcaption>
             </figure>
             <figure class="shot reveal" data-delay="1">
-                <img src="assets/img/tumiaru-banheiro.jpg" alt="Banheiro da unidade Tumiaru" width="731" height="1300" loading="lazy">
+                <img src="assets/img/tumiaru-banheiro.webp" alt="Banheiro da unidade Tumiaru" width="731" height="1300" loading="lazy">
                 <span class="zoom" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
                 <figcaption><span class="tag">BANHEIROS</span><h3>Estrutura completa</h3><p>Banheiros modernos e bem cuidados, à disposição do time em cada andar da unidade.</p></figcaption>
             </figure>
@@ -727,22 +770,24 @@
     </div>
 </section>
 
-<section id="noticias">
+<section id="instagram">
     <div class="wrap">
-        <div class="section-head reveal">
-            <span class="tag">ACOMPANHE</span>
-            <h2 class="display">Notícias</h2>
-            <p>Resultados e novidades do time em breve.</p>
-        </div>
-        <div class="news-grid">
-            <div class="card news-card reveal">
-                <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg></div>
-                <div><span class="soon">EM BREVE</span><h3>Primeiros resultados do time</h3></div>
+        <div class="card ig-box reveal">
+            <div class="ig-text">
+                <span class="tag">ACOMPANHE</span>
+                <h2 class="display">Bastidores no <span class="grad-text">Instagram</span>.</h2>
+                <p>Rotina do time, novidades das unidades e os primeiros resultados — tudo sai primeiro no nosso Instagram.</p>
+                <a href="https://instagram.com/ace_bootcamp_br" target="_blank" rel="noopener" class="ig-handle">
+                    <span class="ig-logo"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+                    <span><strong>@ace_bootcamp_br</strong><small>Seguir no Instagram →</small></span>
+                </a>
             </div>
-            <div class="card news-card reveal" data-delay="1">
-                <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8H20l-4.9 3.6 1.9 5.8L12 14.6l-5 3.6 1.9-5.8L4 8.8h6.1z"/></svg></div>
-                <div><span class="soon">EM BREVE</span><h3>Novidades das unidades</h3></div>
-            </div>
+            <a href="https://instagram.com/ace_bootcamp_br" target="_blank" rel="noopener" class="ig-mosaic" aria-label="Abrir o Instagram da ACE Bootcamp">
+                <img src="assets/img/abilio-gameroom.webp" alt="" width="1050" height="1400" loading="lazy">
+                <img src="assets/img/cta-bg.webp" alt="" width="1400" height="971" loading="lazy">
+                <img src="assets/img/pc-config-a.webp" alt="" width="1300" height="975" loading="lazy">
+                <img src="assets/img/joinville-convivencia.webp" alt="" width="1400" height="931" loading="lazy">
+            </a>
         </div>
     </div>
 </section>
@@ -750,7 +795,7 @@
 <div class="cta-banner">
     <div class="wrap">
         <div class="cta-box reveal">
-            <img src="assets/img/cta-bg.jpg" alt="" width="1400" height="971" loading="lazy">
+            <img src="assets/img/cta-bg.webp" alt="" width="1400" height="971" loading="lazy">
             <h2 class="display">Quer treinar <span class="grad-text">na ACE</span>?</h2>
             <p>Fale com a gente sobre vagas, parcerias ou visitas às unidades.</p>
             <a href="#contato" class="btn btn-primary btn-glow">Fale com a gente
@@ -787,11 +832,20 @@
             </div>
             <form class="card form reveal" data-delay="1" onsubmit="return enviarContato(event)">
                 <div class="field"><label for="contact-nome">Nome</label><input type="text" id="contact-nome" placeholder="Seu nome" autocomplete="name" required></div>
-                <div class="field"><label for="contact-email">E-mail</label><input type="email" id="contact-email" placeholder="voce@email.com" autocomplete="email" required></div>
-                <div class="field"><label for="contact-msg">Mensagem</label><textarea id="contact-msg" placeholder="Conta pra gente o que você procura" required></textarea></div>
-                <button type="submit" class="btn btn-primary">Enviar mensagem
+                <fieldset class="field">
+                    <legend>Assunto</legend>
+                    <div class="chips">
+                        <label><input type="radio" name="assunto" value="Treinar na ACE / vagas" checked><span>Treinar na ACE</span></label>
+                        <label><input type="radio" name="assunto" value="Parceria"><span>Parceria</span></label>
+                        <label><input type="radio" name="assunto" value="Visita às unidades"><span>Visita</span></label>
+                        <label><input type="radio" name="assunto" value="Outro assunto"><span>Outro</span></label>
+                    </div>
+                </fieldset>
+                <div class="field"><label for="contact-msg">Mensagem</label><textarea id="contact-msg" placeholder="Conta pra gente o que você procura: time, jogo, quantos jogadores, período…" required></textarea></div>
+                <button type="submit" class="btn btn-primary">Enviar pelo WhatsApp
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                 </button>
+                <p class="form-note">Abre o WhatsApp com a sua mensagem pronta — é só apertar enviar.</p>
             </form>
         </div>
     </div>
@@ -823,16 +877,27 @@
 </div>
 
 <script>
+var WHATSAPP = '5511964480937';
+
+// Envia o evento para o Google Analytics / Meta Pixel, se estiverem instalados
+function trackEvent(name, params) {
+    try {
+        if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
+        if (typeof window.fbq === 'function') window.fbq('trackCustom', name, params || {});
+    } catch (err) {}
+}
+
 function enviarContato(e) {
     e.preventDefault();
-    var nome = document.getElementById('contact-nome').value;
-    var email = document.getElementById('contact-email').value;
-    var msg = document.getElementById('contact-msg').value;
-    var assunto = encodeURIComponent('Contato pelo site — ' + nome);
-    var corpo = encodeURIComponent(
-        'Nome: ' + nome + '\nE-mail: ' + email + '\n\nMensagem:\n' + msg
-    );
-    window.location.href = 'mailto:contato.acebootcamp@gmail.com?subject=' + assunto + '&body=' + corpo;
+    var nome = document.getElementById('contact-nome').value.trim();
+    var assunto = (document.querySelector('input[name="assunto"]:checked') || {}).value || 'Contato';
+    var msg = document.getElementById('contact-msg').value.trim();
+    var texto = 'Olá, ACE Bootcamp! Vim pelo site.\n\n' +
+        '*Nome:* ' + nome + '\n*Assunto:* ' + assunto + '\n\n' + msg;
+    var url = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(texto);
+    trackEvent('form_whatsapp', { assunto: assunto });
+    var win = window.open(url, '_blank', 'noopener');
+    if (!win) window.location.href = url;
     return false;
 }
 
@@ -898,6 +963,16 @@ function enviarContato(e) {
             card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
             card.style.setProperty('--my', (e.clientY - r.top) + 'px');
         });
+    });
+
+    // Métricas de clique nos canais de contato
+    document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[href]');
+        if (!a) return;
+        var href = a.getAttribute('href'), local = a.classList.contains('wa-float') ? 'botao_flutuante' : (a.closest('section, footer') || {}).id || 'rodape';
+        if (href.indexOf('wa.me') !== -1) trackEvent('whatsapp_click', { local: local });
+        else if (href.indexOf('instagram.com') !== -1) trackEvent('instagram_click', { local: local });
+        else if (href.indexOf('mailto:') === 0) trackEvent('email_click', { local: local });
     });
 
     // Lightbox das fotos
