@@ -240,6 +240,30 @@
     .marquee-track span::after { content: "✦"; color: var(--purple); font-size: 14px; }
     @keyframes marquee { to { transform: translateX(-50%); } }
 
+    /* ---------------- TIMES ---------------- */
+    .teams { padding: 90px 0 80px; overflow: hidden; }
+    .teams-head { max-width: 960px; margin: 0 auto 48px; text-align: center; }
+    .teams-head .tag { justify-content: center; }
+    .teams-marquee {
+        position: relative; padding: 36px 0; border-block: 1px solid var(--border);
+        background: radial-gradient(ellipse 60% 100% at 50% 50%, rgba(139,92,246,.12), transparent 70%), linear-gradient(90deg, rgba(139,92,246,.06), rgba(34,211,238,.05));
+        mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+        -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    }
+    .teams-track { display: flex; width: max-content; animation: marquee 45s linear infinite; }
+    .teams-marquee:hover .teams-track { animation-play-state: paused; }
+    .teams-set { display: flex; align-items: center; }
+    .team { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 14px; padding: 0 clamp(36px, 4vw, 64px); min-height: 124px; }
+    .team img { height: calc(var(--h) * 1px); width: auto; opacity: .72; transition: opacity .3s, transform .35s var(--ease), filter .35s; }
+    .team figcaption { font-family: 'Chakra Petch', sans-serif; font-size: 12.5px; font-weight: 600; letter-spacing: 1.6px; text-transform: uppercase; color: var(--text-faint); transition: color .3s; }
+    .team:hover img { opacity: 1; transform: translateY(-3px) scale(1.06); filter: drop-shadow(0 0 18px rgba(167,139,250,.55)); }
+    .team:hover figcaption { color: var(--text); }
+    @media (max-width: 700px) {
+        .teams { padding: 70px 0 60px; }
+        .team { min-height: 92px; gap: 10px; }
+        .team img { height: calc(var(--h) * .68px); }
+    }
+
     /* ---------------- SEÇÃO GENÉRICA ---------------- */
     section { padding: 110px 0; position: relative; }
     .section-head { max-width: 680px; margin-bottom: 56px; }
@@ -546,6 +570,23 @@
         <span>Ryzen 9800X3D</span><span>RTX 5070</span><span>Monitores 360Hz</span><span>CS2</span><span>Valorant</span><span>Conexão redundante</span><span>Dormitório</span><span>4 refeições por dia</span>
     </div>
 </div>
+
+<section id="times" class="teams">
+    <div class="wrap">
+        <div class="section-head teams-head reveal">
+            <span class="tag">QUEM JÁ TREINOU AQUI</span>
+            <h2 class="display">Times que já passaram <span class="grad-text">na ACE</span></h2>
+        </div>
+    </div>
+    <div class="teams-marquee reveal" data-delay="1">
+        <div class="teams-track">
+            <div class="teams-set"><figure class="team"><img src="assets/img/times/leviatan.png" alt="Leviatan" width="185" height="240" style="--h:84" loading="lazy"><figcaption>Leviatan</figcaption></figure><figure class="team"><img src="assets/img/times/los.png" alt="LOS" width="640" height="188" style="--h:48" loading="lazy"><figcaption>LOS</figcaption></figure><figure class="team"><img src="assets/img/times/loud.png" alt="LOUD" width="323" height="240" style="--h:77" loading="lazy"><figcaption>LOUD</figcaption></figure><figure class="team"><img src="assets/img/times/evil-geniuses.png" alt="Evil Geniuses" width="179" height="240" style="--h:84" loading="lazy"><figcaption>Evil Geniuses</figcaption></figure><figure class="team"><img src="assets/img/times/mibr.png" alt="MIBR" width="599" height="240" style="--h:57" loading="lazy"><figcaption>MIBR</figcaption></figure></div>
+            <div class="teams-set" aria-hidden="true"><figure class="team"><img src="assets/img/times/leviatan.png" alt="" width="185" height="240" style="--h:84" loading="lazy"><figcaption>Leviatan</figcaption></figure><figure class="team"><img src="assets/img/times/los.png" alt="" width="640" height="188" style="--h:48" loading="lazy"><figcaption>LOS</figcaption></figure><figure class="team"><img src="assets/img/times/loud.png" alt="" width="323" height="240" style="--h:77" loading="lazy"><figcaption>LOUD</figcaption></figure><figure class="team"><img src="assets/img/times/evil-geniuses.png" alt="" width="179" height="240" style="--h:84" loading="lazy"><figcaption>Evil Geniuses</figcaption></figure><figure class="team"><img src="assets/img/times/mibr.png" alt="" width="599" height="240" style="--h:57" loading="lazy"><figcaption>MIBR</figcaption></figure></div>
+            <div class="teams-set" aria-hidden="true"><figure class="team"><img src="assets/img/times/leviatan.png" alt="" width="185" height="240" style="--h:84" loading="lazy"><figcaption>Leviatan</figcaption></figure><figure class="team"><img src="assets/img/times/los.png" alt="" width="640" height="188" style="--h:48" loading="lazy"><figcaption>LOS</figcaption></figure><figure class="team"><img src="assets/img/times/loud.png" alt="" width="323" height="240" style="--h:77" loading="lazy"><figcaption>LOUD</figcaption></figure><figure class="team"><img src="assets/img/times/evil-geniuses.png" alt="" width="179" height="240" style="--h:84" loading="lazy"><figcaption>Evil Geniuses</figcaption></figure><figure class="team"><img src="assets/img/times/mibr.png" alt="" width="599" height="240" style="--h:57" loading="lazy"><figcaption>MIBR</figcaption></figure></div>
+            <div class="teams-set" aria-hidden="true"><figure class="team"><img src="assets/img/times/leviatan.png" alt="" width="185" height="240" style="--h:84" loading="lazy"><figcaption>Leviatan</figcaption></figure><figure class="team"><img src="assets/img/times/los.png" alt="" width="640" height="188" style="--h:48" loading="lazy"><figcaption>LOS</figcaption></figure><figure class="team"><img src="assets/img/times/loud.png" alt="" width="323" height="240" style="--h:77" loading="lazy"><figcaption>LOUD</figcaption></figure><figure class="team"><img src="assets/img/times/evil-geniuses.png" alt="" width="179" height="240" style="--h:84" loading="lazy"><figcaption>Evil Geniuses</figcaption></figure><figure class="team"><img src="assets/img/times/mibr.png" alt="" width="599" height="240" style="--h:57" loading="lazy"><figcaption>MIBR</figcaption></figure></div>
+        </div>
+    </div>
+</section>
 
 <section id="sobre">
     <div class="glow-orb" style="background: var(--violet); top: 10%; right: -200px;"></div>
