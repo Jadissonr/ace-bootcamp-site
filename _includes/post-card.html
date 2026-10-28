@@ -1,0 +1,23 @@
+{%- assign p = include.post -%}
+{%- assign p_cover = p.image | default: "" -%}
+<article class="card post-card{% if include.featured %} featured{% endif %}" data-category="{{ p.category | slugify }}">
+    <a href="{{ p.url | relative_url }}" class="post-card-link">
+        <div class="post-card-img">
+            {%- if p_cover != "" %}
+            <img src="{{ p_cover | relative_url }}" alt="{{ p.image_alt | default: p.title | escape }}" width="1600" height="900" loading="lazy">
+            {%- else %}
+            <div class="post-card-placeholder" aria-hidden="true"><img src="/assets/img/logo.png" alt="" width="336" height="147"></div>
+            {%- endif %}
+            {%- if p.category %}<span class="post-card-cat">{{ p.category }}</span>{% endif %}
+        </div>
+        <div class="post-card-body">
+            <h3>{{ p.title }}</h3>
+            <p>{{ p.description | default: p.excerpt | strip_html | normalize_whitespace | truncate: 150 }}</p>
+            <div class="post-card-meta">
+                <time datetime="{{ p.date | date_to_xmlschema }}">{% include date-pt.html date=p.date %}</time>
+                <span class="dot-sep" aria-hidden="true">·</span>
+                {% include reading-time.html content=p.content %}
+            </div>
+        </div>
+    </a>
+</article>
