@@ -1,0 +1,4 @@
+{%- comment -%} Data por extenso em português. Uso: include date-pt.html date=post.date {%- endcomment -%}
+{%- assign meses = "janeiro,fevereiro,março,abril,maio,junho,julho,agosto,setembro,outubro,novembro,dezembro" | split: "," -%}
+{%- assign mes = include.date | date: "%-m" | minus: 1 -%}
+{{ include.date | date: "%-d" }} de {{ meses[mes] }} de {{ include.date | date: "%Y" }}

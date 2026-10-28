@@ -1,0 +1,116 @@
+# Configuração do painel Pages CMS (https://app.pagescms.org)
+# Define os campos que aparecem na hora de escrever um artigo do blog.
+
+media:
+  input: assets/img/blog
+  output: /assets/img/blog
+  categories: [image]
+  rename: safe
+
+content:
+  - name: posts
+    label: Artigos do blog
+    description: "Os artigos ficam em acebootcamp.com.br/blog/. Desmarque “Publicado” para salvar como rascunho."
+    type: collection
+    path: _posts
+    filename: "{year}-{month}-{day}-{fields.slug}.md"
+    format: yaml-frontmatter
+    view:
+      fields: [title, category, date, published]
+      primary: title
+      sort: [date, title]
+      search: [title, description]
+      default:
+        sort: date
+        order: desc
+    fields:
+      # ---------- Conteúdo ----------
+      - name: title
+        label: Título do artigo
+        description: "Aparece no topo do artigo (H1) e nos cards do blog."
+        type: string
+        required: true
+        options:
+          maxlength: 110
+      - name: slug
+        label: URL do artigo (slug)
+        description: "Só letras minúsculas, números e hífens. Ex.: rotina-de-treino-cs2 → acebootcamp.com.br/blog/rotina-de-treino-cs2/. Evite mudar depois de publicado."
+        type: string
+        required: true
+        pattern:
+          regex: "^[a-z0-9]+(-[a-z0-9]+)*$"
+          message: "Use só letras minúsculas sem acento, números e hífens (ex.: rotina-de-treino-cs2)."
+      - name: description
+        label: Meta description (resumo)
+        description: "Aparece no Google, nos cards do blog e abaixo do título. Ideal entre 120 e 160 caracteres."
+        type: text
+        required: true
+        options:
+          maxlength: 160
+      - name: date
+        label: Data de publicação
+        description: "Datas no futuro não aparecem no site até a próxima publicação depois dessa data."
+        type: date
+        required: true
+      - name: category
+        label: Categoria
+        type: select
+        required: true
+        options:
+          values: [CS2, Valorant, Treino e rotina, Estrutura e equipamentos, Carreira no esports, Novidades da ACE]
+      - name: tags
+        label: Tags
+        description: "Assuntos do artigo (uma por linha). Ex.: bootcamp, performance, mira."
+        type: string
+        list: true
+      - name: image
+        label: Imagem de capa
+        description: "Formato horizontal (16:9), de preferência 1600×900 px, em JPG ou WebP com até 300 KB."
+        type: image
+      - name: image_alt
+        label: Texto alternativo da capa (alt)
+        description: "Descreva a imagem para o Google e para leitores de tela. Ex.: Gameroom da ACE Bootcamp com estações de CS2."
+        type: string
+      - name: image_caption
+        label: Legenda da capa (opcional)
+        type: string
+      - name: author
+        label: Autor
+        type: string
+        default: Equipe ACE Bootcamp
+      - name: body
+        label: Texto do artigo
+        description: "Use Título 2 (H2) para as seções e Título 3 (H3) para subseções. Não use Título 1: o título do artigo já é o H1."
+        type: rich-text
+
+      # ---------- SEO avançado (opcional) ----------
+      - name: seo_title
+        label: "SEO: title da página (opcional)"
+        description: "Se vazio, usa “Título do artigo | ACE Bootcamp”. Ideal até 60 caracteres."
+        type: string
+        options:
+          maxlength: 70
+      - name: og_image
+        label: "SEO: imagem para compartilhamento (opcional)"
+        description: "Aparece ao compartilhar o link no WhatsApp e nas redes. Se vazio, usa a imagem de capa. Ideal 1200×630 px."
+        type: image
+      - name: canonical_url
+        label: "SEO: URL canônica (opcional)"
+        description: "Só preencha se este conteúdo foi publicado antes em outro endereço. Ex.: https://outrosite.com/artigo"
+        type: string
+      - name: noindex
+        label: "SEO: ocultar do Google (noindex)"
+        description: "Marque para o artigo não aparecer no Google, no sitemap e na listagem do blog."
+        type: boolean
+        default: false
+      - name: last_modified_at
+        label: Data da última atualização (opcional)
+        description: "Preencha quando fizer uma revisão importante no artigo. Aparece como “Atualizado em”."
+        type: date
+
+      # ---------- Publicação ----------
+      - name: published
+        label: Publicado
+        description: "Desmarque para salvar como rascunho (o artigo não vai para o site)."
+        type: boolean
+        default: true

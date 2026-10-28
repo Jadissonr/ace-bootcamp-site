@@ -1,0 +1,113 @@
+---
+layout: default
+body_class: post-page
+---
+{%- assign cover = page.image | default: "" -%}
+<article class="post" itemscope itemtype="https://schema.org/BlogPosting">
+    <header class="post-hero">
+        <div class="wrap post-wrap">
+            <nav class="breadcrumbs" aria-label="Você está em">
+                <a href="/">Início</a><span aria-hidden="true">/</span>
+                <a href="/blog/">Blog</a>
+                {%- if page.category -%}
+                <span aria-hidden="true">/</span><a href="/blog/?categoria={{ page.category | slugify }}">{{ page.category }}</a>
+                {%- endif %}
+            </nav>
+            {%- if page.category %}
+            <span class="tag">{{ page.category | upcase }}</span>
+            {%- endif %}
+            <h1 class="post-title" itemprop="headline">{{ page.title }}</h1>
+            {%- if page.description and page.description != "" %}
+            <p class="post-lead" itemprop="description">{{ page.description }}</p>
+            {%- endif %}
+            <div class="post-meta">
+                <span class="author-badge" aria-hidden="true"><img src="/assets/img/favicon-64.png" alt="" width="64" height="64"></span>
+                <span class="post-meta-text">
+                    <strong itemprop="author">{{ page.author }}</strong>
+                    <span>
+                        <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{% include date-pt.html date=page.date %}</time>
+                        <span class="dot-sep" aria-hidden="true">·</span>
+                        {% include reading-time.html content=page.content %}
+                        {%- if page.last_modified_at and page.last_modified_at != "" %}
+                        <span class="dot-sep" aria-hidden="true">·</span>
+                        Atualizado em <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">{% include date-pt.html date=page.last_modified_at %}</time>
+                        {%- endif %}
+                    </span>
+                </span>
+            </div>
+        </div>
+    </header>
+
+    {%- if cover != "" %}
+    <figure class="post-cover wrap">
+        <img src="{{ cover | relative_url }}" alt="{{ page.image_alt | default: page.title | escape }}" width="1600" height="900" fetchpriority="high" itemprop="image">
+        {%- if page.image_caption and page.image_caption != "" %}
+        <figcaption>{{ page.image_caption }}</figcaption>
+        {%- endif %}
+    </figure>
+    {%- endif %}
+
+    <div class="wrap post-wrap">
+        <div class="prose" itemprop="articleBody">
+            {{ content }}
+        </div>
+
+        {%- if page.tags.size > 0 %}
+        <ul class="post-tags" aria-label="Assuntos">
+            {%- for tag in page.tags %}<li>#{{ tag }}</li>{% endfor %}
+        </ul>
+        {%- endif %}
+
+        {%- assign post_url = page.url | absolute_url -%}
+        {%- capture share_text %}{{ page.title }} {{ post_url }}{% endcapture %}
+        <div class="share" data-share-url="{{ post_url }}" data-share-title="{{ page.title | escape }}">
+            <span class="share-label">Compartilhe</span>
+            <a class="share-btn" href="https://wa.me/?text={{ share_text | url_encode }}" target="_blank" rel="noopener" aria-label="Compartilhar no WhatsApp">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.03c-.25.7-1.43 1.34-2 1.42-.51.08-1.16.11-1.87-.12-.43-.14-.99-.32-1.7-.63-2.98-1.29-4.93-4.29-5.08-4.49-.15-.2-1.22-1.62-1.22-3.09s.77-2.19 1.04-2.49c.28-.3.6-.37.8-.37h.57c.18.01.43-.07.67.51.25.6.84 2.07.92 2.22.07.15.12.32.02.52-.1.2-.15.33-.3.5-.15.17-.31.39-.45.52-.15.15-.3.31-.13.61.18.3.78 1.27 1.66 2.06 1.14 1.02 2.1 1.33 2.4 1.48.3.15.48.13.65-.07.17-.2.74-.87.94-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.03.97.3.15.5.22.57.35.07.12.07.71-.18 1.41z"/></svg>
+            </a>
+            <a class="share-btn" href="https://www.linkedin.com/sharing/share-offsite/?url={{ post_url | url_encode }}" target="_blank" rel="noopener" aria-label="Compartilhar no LinkedIn">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11.25H3zM9.5 9.75h3.83v1.54h.05c.53-1.01 1.84-2.08 3.8-2.08 4.06 0 4.82 2.67 4.82 6.15V21h-4v-5.03c0-1.2-.02-2.74-1.67-2.74-1.67 0-1.93 1.3-1.93 2.65V21h-4z"/></svg>
+            </a>
+            <a class="share-btn" href="https://x.com/intent/post?text={{ page.title | url_encode }}&amp;url={{ post_url | url_encode }}" target="_blank" rel="noopener" aria-label="Compartilhar no X">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.21-6.82-5.97 6.82H1.67l7.73-8.84L1.25 2.25h6.83l4.71 6.23zm-1.16 17.52h1.83L7.08 4.13H5.12z"/></svg>
+            </a>
+            <button type="button" class="share-btn share-copy" aria-label="Copiar link do artigo">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                <span class="share-copy-ok" role="status">Link copiado!</span>
+            </button>
+        </div>
+
+        <aside class="post-cta">
+            <span class="tag">ACE BOOTCAMP</span>
+            <h2>Quer treinar com estrutura de alto rendimento?</h2>
+            <p>Gameroom com PCs de ponta, monitores 360Hz, dormitório e alimentação em São Paulo. Fale com a gente sobre vagas, parcerias ou visitas.</p>
+            <div class="post-cta-actions">
+                <a class="btn btn-primary btn-glow" href="https://wa.me/{{ site.brand.whatsapp }}?text={{ 'Olá, ACE Bootcamp! Vim pelo blog: ' | append: page.title | url_encode }}" target="_blank" rel="noopener">Falar no WhatsApp</a>
+                <a class="btn btn-ghost" href="/#unidades">Conhecer as unidades</a>
+            </div>
+        </aside>
+    </div>
+</article>
+
+{%- comment -%} Artigos relacionados: primeiro da mesma categoria, depois os mais recentes {%- endcomment -%}
+{%- assign related = "" | split: "" -%}
+{%- if page.category -%}
+  {%- for p in site.posts -%}
+    {%- if p.url != page.url and p.category == page.category and p.noindex != true and related.size < 3 -%}{%- assign related = related | push: p -%}{%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+{%- for p in site.posts -%}
+  {%- if p.url != page.url and p.noindex != true and related.size < 3 -%}
+    {%- unless related contains p -%}{%- assign related = related | push: p -%}{%- endunless -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if related.size > 0 %}
+<section class="related">
+    <div class="wrap">
+        <h2 class="related-title">Continue lendo</h2>
+        <div class="post-grid">
+            {%- for post in related %}{% include post-card.html post=post %}{% endfor %}
+        </div>
+    </div>
+</section>
+{%- endif %}

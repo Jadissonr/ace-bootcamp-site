@@ -1,0 +1,54 @@
+# Configuração do Jekyll (gerador de site nativo do GitHub Pages).
+# A página inicial (index.html) continua sendo um arquivo estático; o Jekyll só monta o blog.
+
+title: ACE Bootcamp
+description: "Bootcamp de esports em São Paulo: treino, moradia e alimentação para times de CS2 e Valorant, com PCs de ponta e monitores 360Hz."
+url: "https://acebootcamp.com.br"
+baseurl: ""
+lang: pt-BR
+locale: pt_BR
+timezone: America/Sao_Paulo
+
+# Endereço dos artigos: /blog/nome-do-artigo/
+# O "nome-do-artigo" vem do campo "slug" (ou do nome do arquivo, se o slug estiver vazio).
+permalink: /blog/:slug/
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+  hard_wrap: false
+
+plugins:
+  - jekyll-feed
+
+feed:
+  path: blog/feed.xml
+
+# Dados da marca usados no blog (SEO, rodapé e botões)
+brand:
+  logo: /assets/img/logo.png
+  default_image: /assets/img/og-image.jpg
+  whatsapp: "5511982639807"
+  instagram: ace_bootcamp_br
+  email: contato.acebootcamp@gmail.com
+
+blog:
+  title: Blog da ACE Bootcamp
+  description: "Treino, rotina e performance no cenário competitivo de esports: conteúdos da ACE Bootcamp para times e jogadores de CS2 e Valorant."
+  default_author: Equipe ACE Bootcamp
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      author: Equipe ACE Bootcamp
+
+exclude:
+  - COMO-PUBLICAR.md
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor

@@ -1,9 +1,30 @@
+---
+layout: null
+---
 <?xml version="1.0" encoding="UTF-8"?>
+{%- comment -%} Gerado automaticamente a cada publicação. Artigos com "noindex" ficam de fora. {%- endcomment -%}
+{%- assign posts = site.posts | where_exp: "p", "p.noindex != true" %}
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://acebootcamp.com.br/</loc>
-        <lastmod>2026-09-29</lastmod>
+        <loc>{{ "/" | absolute_url }}</loc>
+        <lastmod>{{ site.time | date: "%Y-%m-%d" }}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>1.0</priority>
     </url>
+    <url>
+        <loc>{{ "/blog/" | absolute_url }}</loc>
+        <lastmod>{% if posts.size > 0 %}{{ posts.first.last_modified_at | default: posts.first.date | date: "%Y-%m-%d" }}{% else %}{{ site.time | date: "%Y-%m-%d" }}{% endif %}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    {%- for post in posts %}
+    {%- unless post.canonical_url and post.canonical_url != "" %}
+    <url>
+        <loc>{{ post.url | absolute_url }}</loc>
+        <lastmod>{{ post.last_modified_at | default: post.date | date: "%Y-%m-%d" }}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    {%- endunless %}
+    {%- endfor %}
 </urlset>
