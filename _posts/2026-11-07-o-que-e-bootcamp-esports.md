@@ -12,9 +12,7 @@ noindex: false
 last_modified_at: 2026-11-07
 published: true
 ---
-# **O que é um bootcamp de esports e como funciona?**  
-  
-
+# **O que é um bootcamp de esports e como funciona?**
 
 Quem acompanha o cenário competitivo de League of Legends, Valorant, CS2 ou Rainbow Six provavelmente já ouviu falar em bootcamp.
 
@@ -22,7 +20,6 @@ Quem acompanha o cenário competitivo de League of Legends, Valorant, CS2 ou Rai
 
 Neste artigo, vamos explicar como funcionam os bootcamps de esports, por que eles são importantes para as equipes profissionais e o que considerar na hora de escolher uma estrutura de treinamento.
 
-  
 
 
 ## **O que é um bootcamp de esports?**
@@ -137,4 +134,3 @@ Sua equipe está planejando uma temporada de treinamentos ou participará de um 
 
 *Entre em contato com nossa equipe para solicitar uma proposta personalizada.*
 
-  
