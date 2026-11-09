@@ -73,6 +73,8 @@
     // Métricas de clique (funcionam quando o Google Analytics / Meta Pixel estiver instalado)
     function trackEvent(name, params) {
         try {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push(Object.assign({ event: name }, params || {}));
             if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
             if (typeof window.fbq === 'function') window.fbq('trackCustom', name, params || {});
         } catch (err) {}
