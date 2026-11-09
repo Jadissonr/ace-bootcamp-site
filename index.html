@@ -2,6 +2,14 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<!-- Google Tag Manager (GTM-T7ZZPNN7): carrega o GA4 e as demais tags configuradas no tagmanager.google.com -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T7ZZPNN7');</script>
+<!-- End Google Tag Manager -->
+<meta name="google-site-verification" content="U2XFriMKIuwR6AZUeGihTnLhxob4lHqkPQuAC_tb2WQ">
 <script>document.documentElement.className += " js";</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ACE Bootcamp | Bootcamp de Esports em São Paulo, Brasil</title>
@@ -50,13 +58,6 @@
     ]
 }
 </script>
-<!--
-    Google Analytics 4: para medir visitas e cliques no WhatsApp, cole aqui o código
-    do GA4 (Admin > Fluxos de dados > Instruções de tag), trocando G-XXXXXXXXXX pelo seu ID:
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
-    Os eventos "whatsapp_click", "instagram_click", "email_click" e "form_whatsapp" já são enviados automaticamente.
--->
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="assets/img/favicon-64.png">
 <link rel="apple-touch-icon" href="assets/img/favicon-64.png">
@@ -531,6 +532,10 @@
 </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T7ZZPNN7"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <header id="top-nav">
     <nav class="wrap wrap-wide" aria-label="Principal">
@@ -959,6 +964,8 @@ var WHATSAPP = '5511982639807';
 // Envia o evento para o Google Analytics / Meta Pixel, se estiverem instalados
 function trackEvent(name, params) {
     try {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(Object.assign({ event: name }, params || {}));
         if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
         if (typeof window.fbq === 'function') window.fbq('trackCustom', name, params || {});
     } catch (err) {}
