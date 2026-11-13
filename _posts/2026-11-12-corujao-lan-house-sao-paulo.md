@@ -31,7 +31,7 @@ Para quem busca uma **lan house gamer em São Paulo**, a ACE oferece a possibili
 - **Computadores com Ryzen 9800X3D ou 7800X3D.**
 - **Monitores BenQ de 360 Hz ou 400 Hz.**
 - **Duas conexões de internet.**
-- **Salas climatizadas.**
+- **Salas com ar condicionado.**
 
 As configurações e a distribuição dos equipamentos dependem da disponibilidade. Na reserva, nossa equipe apresenta a sala e os setups disponíveis para o grupo.
 
