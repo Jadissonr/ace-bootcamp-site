@@ -1,5 +1,5 @@
 ---
-title: "Corujão na lan house em São Paulo: reúna seus amigos para jogar na ACE"
+title: "Corujão na lan house em São Paulo: reúna seus amigos para jogar juntos"
 slug: corujao-lan-house-sao-paulo
 description: "Corujão lan house em São Paulo: reúna até 10 pessoas em uma sala
   exclusiva da ACE, com PCs gamer e opções de alimentação e hospedagem. Apenas
